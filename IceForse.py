@@ -111,6 +111,7 @@ cbox_form.bind(
     ),
 )
 
+
 angle = Entry(
     window, width=10, state="readonly"
 )  # окно ввода текста - угол заострения соружения
