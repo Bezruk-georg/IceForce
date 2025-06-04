@@ -55,6 +55,13 @@ koef_m_txt = Label(
 )
 koef_m_txt.grid(column=0, row=5, sticky="w")
 
+b_constr_txt = Label(
+    window,
+    text="Ширина сооружения на уровне льда",
+    font=("Arial Bold", 10),
+)  # Угол заострения опоры в плане_подпись
+b_constr_txt.grid(column=0, row=6, sticky="w")
+
 ice_field_area_rb = Label(
     window,
     text="Способ ввода площади ледового поля:",
@@ -66,8 +73,11 @@ ice_field_area = Label(
     window,
     text="Площадь ледового поля",
     font=("Arial Bold", 10),
-)  # Угол заострения опоры в плане_подпись
+)  # Площадь ледового поля
 ice_field_area.grid(column=0, row=8, sticky="w")
+
+
+
 
 # Ввод переменных (column 1)
 speedobz = Label(
@@ -91,6 +101,13 @@ angleobz = Label(
 )  # Угол сооружения в плане
 angleobz.grid(column=1, row=4, sticky="e")
 
+b_constr_obz = Label(
+    window,
+    text="b = ",
+    font=("Arial Bold", 10),
+)  # Ширина сооружения
+area_field_obz.grid(column=1, row=6, sticky="e")
+
 area_field_obz = Label(
     window,
     text="A = ",
@@ -108,6 +125,8 @@ edmm2 = Label(window, text=m, font=("Arial Bold", 10))
 edmm2.grid(column=3, row=2)
 edmm_angle = Label(window, text="°", font=("Arial Bold", 10))
 edmm_angle.grid(column=3, row=4)
+edmm_b = Label(window, text="м", font=("Arial Bold", 10))
+edmm_b.grid(column=3, row=6)
 edmm_field = Label(window, text="м^2", font=("Arial Bold", 10))
 edmm_field.grid(column=3, row=8)
 
@@ -159,6 +178,10 @@ angle.bind(
         table_data_sp.m_triang, angle.get(), koef_m_result
     ),
 )
+
+# Ввод ширины сооружения
+b_constr = Entry(window, width=10)  # окно ввода текста - ширина сооружения
+b_constr.grid(column=2, row=6)  # положение окна ввода текста - ширина сооружения
 
 # Ввод площади ледового поля
 a_ice_field = Entry(window, width=10)  # окно ввода текста - площадь ледового поля
