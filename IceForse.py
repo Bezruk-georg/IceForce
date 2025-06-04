@@ -48,6 +48,18 @@ angletxt = Label(
 )  # Угол заострения опоры в плане_подпись
 angletxt.grid(column=0, row=4, sticky="w")
 
+koef_m_txt = Label(
+    window, text="Коэффициент формы опоры в плане:", font=("Arial Bold", 10)
+)
+koef_m_txt.grid(column=0, row=5, sticky="w")
+
+ice_field_area = Label(
+    window,
+    text="Ввод площади ледового поля:",
+    font=("Arial Bold", 10),
+)  # Угол заострения опоры в плане_подпись
+ice_field_area.grid(column=0, row=6, sticky="w")
+
 # Ввод переменных (column 1)
 speedobz = Label(
     window,
@@ -67,7 +79,7 @@ angleobz = Label(
     window,
     text="2γ = ",
     font=("Arial Bold", 10),
-)  # Текст обозначения угла сооружения в плане
+)  # Угол сооружения в плане
 angleobz.grid(column=1, row=4, sticky="e")
 
 
@@ -81,12 +93,13 @@ edmm2.grid(column=3, row=2)
 edmm_angle = Label(window, text="°", font=("Arial Bold", 10))
 edmm_angle.grid(column=3, row=4)
 
-# Блок вспомогательных подписей (column 4)
-# Подписи расчёта размеров краевых полей
+# Блок расчитываемых переменных автоматически (column 1-3)
+
+# Коэффициент формы сооружения в плане m
 koef_m_result = Label(
-    window, text="Коэффициент формы опоры в плане, m = ", font=("Arial Bold", 10)
+    window, text="m = ", font=("Arial Bold", 10)
 )
-koef_m_result.grid(column=0, row=5, columnspan=3, sticky="w")
+koef_m_result.grid(column=1, row=5, columnspan=3)
 
 
 # Блок полей ввода (column 2)

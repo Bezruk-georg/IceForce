@@ -7,7 +7,7 @@ def m_triang_interpolation(table_m_triang, angle, koef_m_result):
     angle_values = np.array(table_m_triang[0])  # Значения угла табличные
     m_values = np.array(table_m_triang[1])  # Значения m табличные
     m = np.interp(float(angle), angle_values, m_values)  # Интерполяция значения
-    koef_m_str = f"Коэффициент формы опоры в плане, m = {m}"
+    koef_m_str = f"m = {m}"
     koef_m_result.config(text=koef_m_str)  # Вспомогательная подпись для обозначения
 
 
@@ -22,5 +22,5 @@ def koef_m(event, forms, cbox_form, koef_m_result, angle):
         angle.config(state="normal")
         return  # Не обновляем m, пока не введён угол
 
-    koef_m_str = f"Коэффициент формы опоры в плане, m = {m}"
+    koef_m_str = f"m = {m}"
     koef_m_result.config(text=koef_m_str)
