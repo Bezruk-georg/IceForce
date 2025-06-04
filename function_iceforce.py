@@ -1,5 +1,6 @@
 import table_data_sp
 import numpy as np
+from tkinter import END
 
 
 # Функция интерполяции значений m, если выбрана форма треугольник
@@ -16,8 +17,12 @@ def koef_m(event, forms, cbox_form, koef_m_result, angle):
     form_var = cbox_form.get()
     if form_var == forms[2]:  # Прямоугольник
         m = table_data_sp.m_sqad
+        angle.delete(0, END)  # Очищаем значение угла
+        angle.config(state="disabled")  # Блокируем поле ввода угла
     elif form_var == forms[1]:  # Многогранник
         m = table_data_sp.m_mnog
+        angle.delete(0, END)  # Очищаем значение угла
+        angle.config(state="disabled")  # Блокируем поле ввода угла
     elif form_var == forms[0]:  # Треугольник
         angle.config(state="normal")
         return  # Не обновляем m, пока не введён угол

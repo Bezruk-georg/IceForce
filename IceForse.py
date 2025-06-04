@@ -96,7 +96,7 @@ area_field_obz = Label(
     text="A = ",
     font=("Arial Bold", 10),
 )  # Площадь ледового поля
-angleobz.grid(column=1, row=8, sticky="e")
+area_field_obz.grid(column=1, row=8, sticky="e")
 
 
 # Блок вывода единиц измерения (column 3)
