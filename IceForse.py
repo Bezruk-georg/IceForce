@@ -18,18 +18,20 @@ zag = Label(
 )
 zag.grid(column=0, row=0)
 
+
+
 # Блок подписей вводимых переменных (column 0)
 
 speedtxt = Label(
     window,
-    text="Скорость движения ледяного поля, ",
+    text="Скорость движения ледяного поля ",
     font=("Arial Bold", 10),
 )  # Текст скорости движения льда
 speedtxt.grid(column=0, row=1, sticky="w")
 
 hdtxt = Label(
     window,
-    text="Толщина ровного льда, ",
+    text="Толщина ровного льда ",
     font=("Arial Bold", 10),
 )  # Текст ввода толщины льда
 hdtxt.grid(column=0, row=2, sticky="w")
@@ -43,22 +45,29 @@ formtxt.grid(column=0, row=3, sticky="w")
 
 angletxt = Label(
     window,
-    text="Угол заострения треугольного сооружения в плане",
+    text="Угол заострения сооружения в плане",
     font=("Arial Bold", 10),
 )  # Угол заострения опоры в плане_подпись
 angletxt.grid(column=0, row=4, sticky="w")
 
 koef_m_txt = Label(
-    window, text="Коэффициент формы опоры в плане:", font=("Arial Bold", 10)
+    window, text="Коэффициент формы опоры в плане", font=("Arial Bold", 10)
 )
 koef_m_txt.grid(column=0, row=5, sticky="w")
 
-ice_field_area = Label(
+ice_field_area_rb = Label(
     window,
-    text="Ввод площади ледового поля:",
+    text="Способ ввода площади ледового поля:",
     font=("Arial Bold", 10),
 )  # Угол заострения опоры в плане_подпись
-ice_field_area.grid(column=0, row=6, sticky="w")
+ice_field_area_rb.grid(column=0, row=7, sticky="w")
+
+ice_field_area = Label(
+    window,
+    text="Площадь ледового поля",
+    font=("Arial Bold", 10),
+)  # Угол заострения опоры в плане_подпись
+ice_field_area.grid(column=0, row=8, sticky="w")
 
 # Ввод переменных (column 1)
 speedobz = Label(
@@ -82,6 +91,13 @@ angleobz = Label(
 )  # Угол сооружения в плане
 angleobz.grid(column=1, row=4, sticky="e")
 
+area_field_obz = Label(
+    window,
+    text="A = ",
+    font=("Arial Bold", 10),
+)  # Площадь ледового поля
+angleobz.grid(column=1, row=8, sticky="e")
+
 
 # Блок вывода единиц измерения (column 3)
 ms = "м/с"  # Единицы измерения м/с
@@ -92,6 +108,11 @@ edmm2 = Label(window, text=m, font=("Arial Bold", 10))
 edmm2.grid(column=3, row=2)
 edmm_angle = Label(window, text="°", font=("Arial Bold", 10))
 edmm_angle.grid(column=3, row=4)
+edmm_field = Label(window, text="м^2", font=("Arial Bold", 10))
+edmm_field.grid(column=3, row=8)
+
+
+
 
 # Блок расчитываемых переменных автоматически (column 1-3)
 
@@ -102,6 +123,8 @@ koef_m_result = Label(
 koef_m_result.grid(column=1, row=5, columnspan=3)
 
 
+
+
 # Блок полей ввода (column 2)
 
 v_speed = Entry(window, width=10)  # окно ввода текста - скорость льда
@@ -110,6 +133,7 @@ v_speed.grid(column=2, row=1)  # положение окна ввода текс
 hd = Entry(window, width=10)  # окно ввода текста - скорость льда
 hd.grid(column=2, row=2)  # положение окна ввода текста - скорость льда
 
+# Выбор формы сооружения в плане для расчёта m
 forms = [
     "Треугольник",
     "Многогранник/полуциркульное",
@@ -124,7 +148,7 @@ cbox_form.bind(
     ),
 )
 
-
+# Ввод угла заострения треугольного сооружения
 angle = Entry(
     window, width=10, state="readonly"
 )  # окно ввода текста - угол заострения соружения
@@ -136,5 +160,8 @@ angle.bind(
     ),
 )
 
+# Ввод площади ледового поля
+a_ice_field = Entry(window, width=10)  # окно ввода текста - площадь ледового поля
+a_ice_field.grid(column=2, row=8)  # положение окна ввода текста - площадь ледового поля
 
 window.mainloop()  # бесконечный цикл, чтобы окно не закрывалось
