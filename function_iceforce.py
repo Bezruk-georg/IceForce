@@ -17,12 +17,16 @@ def koef_m(event, forms, cbox_form, koef_m_result, angle):
     form_var = cbox_form.get()
     if form_var == forms[2]:  # Прямоугольник
         m = table_data_sp.m_sqad
+        angle.config(state="normal") # Разблокируем значение угла
         angle.delete(0, END)  # Очищаем значение угла
+        angle.insert(0, "90°")
         angle.config(state="disabled")  # Блокируем поле ввода угла
     elif form_var == forms[1]:  # Многогранник
         m = table_data_sp.m_mnog
+        angle.config(state="normal") # Разблокируем значение угла
         angle.delete(0, END)  # Очищаем значение угла
-        angle.config(state="disabled")  # Блокируем поле ввода угла
+        angle.insert(0, "140°")
+        angle.config(state="readonly")  # Блокируем поле ввода угла
     elif form_var == forms[0]:  # Треугольник
         angle.config(state="normal")
         return  # Не обновляем m, пока не введён угол

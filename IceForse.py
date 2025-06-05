@@ -106,7 +106,7 @@ b_constr_obz = Label(
     text="b = ",
     font=("Arial Bold", 10),
 )  # Ширина сооружения
-area_field_obz.grid(column=1, row=6, sticky="e")
+b_constr_obz.grid(column=1, row=6, sticky="e")
 
 area_field_obz = Label(
     window,
