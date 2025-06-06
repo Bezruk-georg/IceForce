@@ -76,7 +76,12 @@ ice_field_area = Label(
 )  # Площадь ледового поля
 ice_field_area.grid(column=0, row=8, sticky="w")
 
-
+ice_strength_txt = Label(
+    window,
+    text="Предел прочности льда при сжатии",
+    font=("Arial Bold", 10),
+)  # Площадь ледового поля
+ice_strength_txt.grid(column=0, row=9, sticky="w")
 
 
 # Ввод переменных (column 1)
@@ -115,6 +120,13 @@ area_field_obz = Label(
 )  # Площадь ледового поля
 area_field_obz.grid(column=1, row=8, sticky="e")
 
+ice_strength_obz = Label(
+    window,
+    text="Rc = ",
+    font=("Arial Bold", 10),
+)  # Предел прочности льда на сжатие
+ice_strength_obz.grid(column=1, row=9, sticky="e")
+
 
 # Блок вывода единиц измерения (column 3)
 ms = "м/с"  # Единицы измерения м/с
@@ -129,6 +141,8 @@ edmm_b = Label(window, text="м", font=("Arial Bold", 10))
 edmm_b.grid(column=3, row=6)
 edmm_field = Label(window, text="м^2", font=("Arial Bold", 10))
 edmm_field.grid(column=3, row=8)
+edmm_ice_strength = Label(window, text="МПа", font=("Arial Bold", 10))
+edmm_ice_strength.grid(column=3, row=9)
 
 
 
@@ -181,10 +195,14 @@ angle.bind(
 
 # Ввод ширины сооружения
 b_constr = Entry(window, width=10)  # окно ввода текста - ширина сооружения
-b_constr.grid(column=2, row=6)  # положение окна ввода текста - ширина сооружения
+b_constr.grid(column=2, row=6)
 
 # Ввод площади ледового поля
 a_ice_field = Entry(window, width=10)  # окно ввода текста - площадь ледового поля
-a_ice_field.grid(column=2, row=8)  # положение окна ввода текста - площадь ледового поля
+a_ice_field.grid(column=2, row=8)
+
+# Ввод предела прочности льда на сжатие
+ice_strength = Entry(window, width=10)  # Предел прочности льда на сжатие
+ice_strength.grid(column=2, row=9)
 
 window.mainloop()  # бесконечный цикл, чтобы окно не закрывалось
