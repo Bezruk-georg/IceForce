@@ -19,13 +19,17 @@ def hd_b_func_flag(hd_entry, b_constr_entry, kb_table, koef_kb_result):
 
 
 # Функция интерполяции значений m, если выбрана форма треугольник
-def m_triang_interpolation(table_m_triang, angle, koef_m_result):
-    angle_values = np.array(table_m_triang[0])  # Значения угла табличные
-    m_values = np.array(table_m_triang[1])  # Значения m табличные
-    m = np.interp(float(angle), angle_values, m_values)  # Интерполяция значения
-    koef_m_str = f"m = {m}"
-    koef_m_result.config(text=koef_m_str)  # Вспомогательная подпись для обозначения
-
+def m_triang_interpolation(table_m_triang, angle_entry, koef_m_result):
+    angle_str = angle_entry.get()
+    try:
+        angle_val = float(angle_str.strip('°'))
+        angle_values = np.array(table_m_triang[0]) # Значения угла табличные
+        m_values = np.array(table_m_triang[1])   # Значения m табличные
+        m = np.interp(angle_val, angle_values, m_values) # Интерполяция значения
+        koef_m_str = f"m = {m:.3f}"
+        koef_m_result.config(text=koef_m_str) # Вспомогательная подпись для обозначения
+    except ValueError:
+        pass
 
 # Функция присваивания m при выборе прямоугольной формы и многогранника
 def koef_m(event, forms, cbox_form, koef_m_result, angle):
@@ -34,13 +38,13 @@ def koef_m(event, forms, cbox_form, koef_m_result, angle):
         m = table_data_sp.m_sqad
         angle.config(state="normal") # Разблокируем значение угла
         angle.delete(0, END)  # Очищаем значение угла
-        angle.insert(0, "90°")
+        angle.insert(0, "90")
         angle.config(state="disabled")  # Блокируем поле ввода угла
     elif form_var == forms[1]:  # Многогранник
         m = table_data_sp.m_mnog
         angle.config(state="normal") # Разблокируем значение угла
         angle.delete(0, END)  # Очищаем значение угла
-        angle.insert(0, "140°")
+        angle.insert(0, "140")
         angle.config(state="readonly")  # Блокируем поле ввода угла
     elif form_var == forms[0]:  # Треугольник
         angle.config(state="normal")
