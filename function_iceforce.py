@@ -4,16 +4,19 @@ from tkinter import END
 
 # Функции флагов
 # Флаг для hd
-def hd_func_flag(hd, hd_flag):
-    if hd != 0:
-        hd_flag = 1
-        print(hd_flag) # Убрать
+def hd_b_func_flag(hd_entry, b_constr_entry, kb_table, koef_kb_result):
+    hd = hd_entry.get()
+    b_constr = b_constr_entry.get()
+    if hd and b_constr:  # Проверяем, что поля не пустые
+        try:
+            hd_val = float(hd)
+            b_val = float(b_constr)
+            if hd_val != 0 and b_val != 0:
+                kb_interpolation(hd_val, b_val, kb_table, koef_kb_result)
+        except ValueError:
+            pass  # Игнорируем нечисловые значения
 
-# Флаг для b
-def b_func_flag(b, b_flag):
-    if b != 0:
-        b_flag = 1
-        print(b_flag) # Убрать
+
 
 # Функция интерполяции значений m, если выбрана форма треугольник
 def m_triang_interpolation(table_m_triang, angle, koef_m_result):
@@ -45,3 +48,12 @@ def koef_m(event, forms, cbox_form, koef_m_result, angle):
 
     koef_m_str = f"m = {m}"
     koef_m_result.config(text=koef_m_str)
+
+# Функция интерполяции коэффициента kb
+def kb_interpolation(hd, b_constr, kb_table, koef_kb_result):
+    b_hd_values = np.array(kb_table[0])  # Значения b/hd табличные
+    kb_values = np.array(kb_table[1])  # Значения kb табличные
+    b_hd = b_constr / hd
+    kb = np.interp(b_hd, b_hd_values, kb_values)  # Интерполяция значения
+    koef_kb_str = f" (По таблице 18) Коэффициент kb = {kb:.3f}"
+    koef_kb_result.config(text=koef_kb_str)  # Вспомогательная подпись для обозначения

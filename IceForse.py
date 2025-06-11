@@ -18,10 +18,6 @@ zag = Label(
 )
 zag.grid(column=0, row=0)
 
-# Флаги
-b_flag = 0
-hd_flag = 0
-
 # Блок подписей вводимых переменных (column 0)
 
 speedtxt = Label(
@@ -157,8 +153,10 @@ koef_m_result = Label(
 )
 koef_m_result.grid(column=1, row=5, columnspan=3)
 
-
-
+koef_kb_result = Label(
+    window, text=" (По таблице 18) Коэффициент kb = ", font=("Arial Bold", 10)
+)
+koef_kb_result.grid(column=4, row=6, columnspan=3)
 
 # Блок полей ввода (column 2)
 
@@ -167,10 +165,9 @@ v_speed.grid(column=2, row=1)  # положение окна ввода текс
 
 hd = Entry(window, width=10)  # окно ввода текста - скорость льда
 hd.grid(column=2, row=2)  # положение окна ввода текста - скорость льда
-hd.bind("<FocusOut>",lambda e: function_iceforce.hd_func_flag(
-        hd, hd_flag
-    ),
-)
+hd.bind("<FocusOut>",lambda e: function_iceforce.hd_b_func_flag(
+        hd, b_constr, table_data_sp.kb_table, koef_kb_result
+))
 
 # Выбор формы сооружения в плане для расчёта m
 forms = [
@@ -184,8 +181,7 @@ cbox_form.bind(
     "<<ComboboxSelected>>",
     lambda event: function_iceforce.koef_m(
         event, forms, cbox_form, koef_m_result, angle
-    ),
-)
+))
 
 # Ввод угла заострения треугольного сооружения
 angle = Entry(
@@ -196,16 +192,14 @@ angle.bind(
     "<FocusOut>",
     lambda e: function_iceforce.m_triang_interpolation(
         table_data_sp.m_triang, angle.get(), koef_m_result
-    ),
-)
+))
 
 # Ввод ширины сооружения
 b_constr = Entry(window, width=10)  # окно ввода текста - ширина сооружения
 b_constr.grid(column=2, row=6)
-b_constr.bind("<FocusOut>",lambda e: function_iceforce.b_func_flag(
-        b_constr, b_flag
-    ),
-)
+b_constr.bind("<FocusOut>",lambda e: function_iceforce.hd_b_func_flag(
+        hd, b_constr, table_data_sp.kb_table, koef_kb_result
+))
 
 
 # Ввод площади ледового поля
