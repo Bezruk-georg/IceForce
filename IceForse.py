@@ -202,6 +202,11 @@ angle.bind(
 # Ввод ширины сооружения
 b_constr = Entry(window, width=10)  # окно ввода текста - ширина сооружения
 b_constr.grid(column=2, row=6)
+b_constr.bind("<FocusOut>",lambda e: function_iceforce.b_func_flag(
+        b_constr, b_flag
+    ),
+)
+
 
 # Ввод площади ледового поля
 a_ice_field = Entry(window, width=10)  # окно ввода текста - площадь ледового поля

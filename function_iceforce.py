@@ -3,10 +3,17 @@ import numpy as np
 from tkinter import END
 
 # Функции флагов
+# Флаг для hd
 def hd_func_flag(hd, hd_flag):
     if hd != 0:
         hd_flag = 1
         print(hd_flag) # Убрать
+
+# Флаг для b
+def b_func_flag(b, b_flag):
+    if b != 0:
+        b_flag = 1
+        print(b_flag) # Убрать
 
 # Функция интерполяции значений m, если выбрана форма треугольник
 def m_triang_interpolation(table_m_triang, angle, koef_m_result):
