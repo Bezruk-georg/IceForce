@@ -2,6 +2,11 @@ import table_data_sp
 import numpy as np
 from tkinter import END
 
+# Функции флагов
+def hd_func_flag(hd, hd_flag):
+    if hd != 0:
+        hd_flag = 1
+        print(hd_flag) # Убрать
 
 # Функция интерполяции значений m, если выбрана форма треугольник
 def m_triang_interpolation(table_m_triang, angle, koef_m_result):

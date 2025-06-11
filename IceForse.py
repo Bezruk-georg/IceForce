@@ -8,7 +8,7 @@ import function_iceforce
 # Вызов общего окна
 window = Tk()
 window.title("Расчёт ледовой нагрузки от полей ровного льда")
-window.geometry("1100x950")
+window.geometry("900x800")
 
 # Вывод заголовка в окне
 zag = Label(
@@ -18,7 +18,9 @@ zag = Label(
 )
 zag.grid(column=0, row=0)
 
-
+# Флаги
+b_flag = 0
+hd_flag = 0
 
 # Блок подписей вводимых переменных (column 0)
 
@@ -165,6 +167,10 @@ v_speed.grid(column=2, row=1)  # положение окна ввода текс
 
 hd = Entry(window, width=10)  # окно ввода текста - скорость льда
 hd.grid(column=2, row=2)  # положение окна ввода текста - скорость льда
+hd.bind("<FocusOut>",lambda e: function_iceforce.hd_func_flag(
+        hd, hd_flag
+    ),
+)
 
 # Выбор формы сооружения в плане для расчёта m
 forms = [
